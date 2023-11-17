@@ -12,6 +12,12 @@
 		4E894B812B04F0AF0002559F /* VacancyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894B802B04F0AF0002559F /* VacancyListViewController.swift */; };
 		4E894B862B04F0B00002559F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E894B852B04F0B00002559F /* Assets.xcassets */; };
 		4E894B892B04F0B00002559F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E894B872B04F0B00002559F /* LaunchScreen.storyboard */; };
+		4E894B9F2B06334B0002559F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894B9E2B06334B0002559F /* Config.swift */; };
+		4E894BA12B0637C70002559F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA02B0637C70002559F /* NetworkClient.swift */; };
+		4E894BA32B063B890002559F /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA22B063B890002559F /* CustomError.swift */; };
+		4E894BA52B06449A0002559F /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA42B06449A0002559F /* JsonDecodeHelper.swift */; };
+		4E894BA72B07955B0002559F /* VacancyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA62B07955B0002559F /* VacancyList.swift */; };
+		4E894BA92B07A0020002559F /* DetailedVacancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA82B07A0020002559F /* DetailedVacancy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		4E894B852B04F0B00002559F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E894B882B04F0B00002559F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E894B8A2B04F0B00002559F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E894B9E2B06334B0002559F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		4E894BA02B0637C70002559F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		4E894BA22B063B890002559F /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		4E894BA42B06449A0002559F /* JsonDecodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeHelper.swift; sourceTree = "<group>"; };
+		4E894BA62B07955B0002559F /* VacancyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyList.swift; sourceTree = "<group>"; };
+		4E894BA82B07A0020002559F /* DetailedVacancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedVacancy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,7 @@
 		4E894B922B04F84A0002559F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4E894B9D2B0632E20002559F /* NetworkService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -93,6 +106,8 @@
 		4E894B932B04F89D0002559F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4E894BA62B07955B0002559F /* VacancyList.swift */,
+				4E894BA82B07A0020002559F /* DetailedVacancy.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +183,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4E894B9D2B0632E20002559F /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				4E894BA02B0637C70002559F /* NetworkClient.swift */,
+				4E894B9E2B06334B0002559F /* Config.swift */,
+				4E894BA22B063B890002559F /* CustomError.swift */,
+				4E894BA42B06449A0002559F /* JsonDecodeHelper.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,8 +265,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E894B812B04F0AF0002559F /* VacancyListViewController.swift in Sources */,
+				4E894BA12B0637C70002559F /* NetworkClient.swift in Sources */,
+				4E894B9F2B06334B0002559F /* Config.swift in Sources */,
+				4E894BA52B06449A0002559F /* JsonDecodeHelper.swift in Sources */,
 				4E894B7D2B04F0AF0002559F /* AppDelegate.swift in Sources */,
+				4E894BA72B07955B0002559F /* VacancyList.swift in Sources */,
+				4E894BA92B07A0020002559F /* DetailedVacancy.swift in Sources */,
 				4E894B7F2B04F0AF0002559F /* SceneDelegate.swift in Sources */,
+				4E894BA32B063B890002559F /* CustomError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
