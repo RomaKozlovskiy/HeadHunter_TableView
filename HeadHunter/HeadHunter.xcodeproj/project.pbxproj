@@ -18,6 +18,7 @@
 		4E894BA52B06449A0002559F /* JsonDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA42B06449A0002559F /* JsonDecodeHelper.swift */; };
 		4E894BA72B07955B0002559F /* VacancyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA62B07955B0002559F /* VacancyList.swift */; };
 		4E894BA92B07A0020002559F /* DetailedVacancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA82B07A0020002559F /* DetailedVacancy.swift */; };
+		4E894BAB2B07B6F50002559F /* VacancyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BAA2B07B6F50002559F /* VacancyListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4E894BA42B06449A0002559F /* JsonDecodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodeHelper.swift; sourceTree = "<group>"; };
 		4E894BA62B07955B0002559F /* VacancyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyList.swift; sourceTree = "<group>"; };
 		4E894BA82B07A0020002559F /* DetailedVacancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedVacancy.swift; sourceTree = "<group>"; };
+		4E894BAA2B07B6F50002559F /* VacancyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		4E894B952B04F9030002559F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E894BAA2B07B6F50002559F /* VacancyListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				4E894B812B04F0AF0002559F /* VacancyListViewController.swift in Sources */,
 				4E894BA12B0637C70002559F /* NetworkClient.swift in Sources */,
 				4E894B9F2B06334B0002559F /* Config.swift in Sources */,
+				4E894BAB2B07B6F50002559F /* VacancyListCell.swift in Sources */,
 				4E894BA52B06449A0002559F /* JsonDecodeHelper.swift in Sources */,
 				4E894B7D2B04F0AF0002559F /* AppDelegate.swift in Sources */,
 				4E894BA72B07955B0002559F /* VacancyList.swift in Sources */,
