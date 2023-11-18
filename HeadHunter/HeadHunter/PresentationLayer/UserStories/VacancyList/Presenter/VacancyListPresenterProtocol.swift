@@ -9,6 +9,6 @@ import Foundation
 
 protocol VacancyListPresenterProtocol: AnyObject {
     var vacancyList: VacancyList? { get set }
-    init(view: VacancyListViewProtocol, networkClient: NetworkClientProtocol)
+    init(view: VacancyListViewProtocol, router: RouterProtocol, networkClient: NetworkClientProtocol)
     func fetchVacancyList(path: String, page: Int)
 }

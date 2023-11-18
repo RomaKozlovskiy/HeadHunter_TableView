@@ -8,17 +8,19 @@
 import Foundation
 
 class VacancyListPresenter: VacancyListPresenterProtocol {
-    
+ 
     // MARK: - Properties
     
-    var vacancyList: VacancyList?
     weak var view: VacancyListViewProtocol?
-    private let networkClient: NetworkClientProtocol
+    var router: RouterProtocol?
+    private let networkClient: NetworkClientProtocol!
+    var vacancyList: VacancyList?
     
     // MARK: - Init
     
-    required init(view: VacancyListViewProtocol, networkClient: NetworkClientProtocol) {
+    required init(view: VacancyListViewProtocol, router: RouterProtocol, networkClient: NetworkClientProtocol) {
         self.view = view
+        self.router = router
         self.networkClient = networkClient
     }
     

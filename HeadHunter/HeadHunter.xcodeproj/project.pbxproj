@@ -23,6 +23,11 @@
 		4E894BAF2B08D6680002559F /* VacancyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BAE2B08D6680002559F /* VacancyListPresenter.swift */; };
 		4E894BB12B08D66E0002559F /* VacancyListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BB02B08D66E0002559F /* VacancyListPresenterProtocol.swift */; };
 		4E894BB32B08D78D0002559F /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BB22B08D78D0002559F /* ModuleBuilder.swift */; };
+		4E894BB72B08EDBA0002559F /* DetailedVacancyViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BB62B08EDBA0002559F /* DetailedVacancyViewProtocol.swift */; };
+		4E894BB92B08EDCD0002559F /* DetailedVacancyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BB82B08EDCD0002559F /* DetailedVacancyViewController.swift */; };
+		4E894BBB2B08EDDF0002559F /* DetailedVacancyPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BBA2B08EDDF0002559F /* DetailedVacancyPresenterProtocol.swift */; };
+		4E894BBD2B08EDEB0002559F /* DetailedVacancyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BBC2B08EDEB0002559F /* DetailedVacancyPresenter.swift */; };
+		4E894BBF2B08F6BC0002559F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BBE2B08F6BC0002559F /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,11 @@
 		4E894BAE2B08D6680002559F /* VacancyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyListPresenter.swift; sourceTree = "<group>"; };
 		4E894BB02B08D66E0002559F /* VacancyListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyListPresenterProtocol.swift; sourceTree = "<group>"; };
 		4E894BB22B08D78D0002559F /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		4E894BB62B08EDBA0002559F /* DetailedVacancyViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedVacancyViewProtocol.swift; sourceTree = "<group>"; };
+		4E894BB82B08EDCD0002559F /* DetailedVacancyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedVacancyViewController.swift; sourceTree = "<group>"; };
+		4E894BBA2B08EDDF0002559F /* DetailedVacancyPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedVacancyPresenterProtocol.swift; sourceTree = "<group>"; };
+		4E894BBC2B08EDEB0002559F /* DetailedVacancyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedVacancyPresenter.swift; sourceTree = "<group>"; };
+		4E894BBE2B08F6BC0002559F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +101,7 @@
 				4E894B7C2B04F0AF0002559F /* AppDelegate.swift */,
 				4E894B7E2B04F0AF0002559F /* SceneDelegate.swift */,
 				4E894BB22B08D78D0002559F /* ModuleBuilder.swift */,
+				4E894BBE2B08F6BC0002559F /* Router.swift */,
 				4E894B8A2B04F0B00002559F /* Info.plist */,
 			);
 			path = ApplicationLayer;
@@ -179,6 +190,8 @@
 		4E894B9A2B04FAA90002559F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4E894BBA2B08EDDF0002559F /* DetailedVacancyPresenterProtocol.swift */,
+				4E894BBC2B08EDEB0002559F /* DetailedVacancyPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -186,6 +199,8 @@
 		4E894B9B2B04FAB00002559F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E894BB62B08EDBA0002559F /* DetailedVacancyViewProtocol.swift */,
+				4E894BB82B08EDCD0002559F /* DetailedVacancyViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,13 +300,18 @@
 				4E894BB12B08D66E0002559F /* VacancyListPresenterProtocol.swift in Sources */,
 				4E894BAB2B07B6F50002559F /* VacancyListCell.swift in Sources */,
 				4E894BA52B06449A0002559F /* JsonDecodeHelper.swift in Sources */,
+				4E894BBF2B08F6BC0002559F /* Router.swift in Sources */,
 				4E894BAD2B08D6530002559F /* VacancyListViewProtocol.swift in Sources */,
 				4E894B7D2B04F0AF0002559F /* AppDelegate.swift in Sources */,
+				4E894BBD2B08EDEB0002559F /* DetailedVacancyPresenter.swift in Sources */,
 				4E894BA72B07955B0002559F /* VacancyList.swift in Sources */,
 				4E894BA92B07A0020002559F /* DetailedVacancy.swift in Sources */,
 				4E894B7F2B04F0AF0002559F /* SceneDelegate.swift in Sources */,
 				4E894BB32B08D78D0002559F /* ModuleBuilder.swift in Sources */,
 				4E894BAF2B08D6680002559F /* VacancyListPresenter.swift in Sources */,
+				4E894BBB2B08EDDF0002559F /* DetailedVacancyPresenterProtocol.swift in Sources */,
+				4E894BB72B08EDBA0002559F /* DetailedVacancyViewProtocol.swift in Sources */,
+				4E894BB92B08EDCD0002559F /* DetailedVacancyViewController.swift in Sources */,
 				4E894BA32B063B890002559F /* CustomError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
