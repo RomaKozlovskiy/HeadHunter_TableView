@@ -29,6 +29,7 @@ struct ApiPath {
 protocol NetworkClientProtocol: AnyObject {
     func request<T: Decodable>(
         path: String,
+        page: Int?,
         method: Method,
         requestType: RequestType,
         completion: @escaping(Result<T?, Error>) -> Void)
@@ -56,6 +57,7 @@ class NetworkClient: NetworkClientProtocol {
     
     func request<T: Decodable>(
         path: String,
+        page: Int?,
         method: Method = .get,
         requestType: RequestType,
         completion: @escaping(Result<T?, Error>) -> Void) {
@@ -71,8 +73,14 @@ class NetworkClient: NetworkClientProtocol {
                 
             case .vacancyList:
                 var queryItems: [URLQueryItem] = urlComponents.queryItems ?? []
-                let queryItem = URLQueryItem(name: "text", value: path)
-                queryItems.append(queryItem)
+                let vacancyQueryItems: [URLQueryItem] = [
+                    URLQueryItem(name: "text", value: path),
+                    URLQueryItem(name: "page", value: String(page ?? 0)),
+                    URLQueryItem(name: "per_page", value: "20")
+                ]
+                vacancyQueryItems.forEach { queryItem in
+                    queryItems.append(queryItem)
+                }
                 urlComponents.queryItems = queryItems
                 var urlRequest = URLRequest(url: (urlComponents.url)!)
                 urlRequest.httpMethod = method.rawValue

@@ -18,7 +18,7 @@ class VacancyListCell: UITableViewCell {
     lazy var companyName: UILabel = _companyName
     lazy var companyLogo: UIImageView = _companyLogo
     lazy var requirementsLabel: UILabel = _requirementsLabel
-    lazy var responsibilities: UILabel = _responsibilities
+    lazy var responsibilitiesLabel: UILabel = _responsibilitiesLabel
     
     // MARK: - init
     
@@ -32,6 +32,42 @@ class VacancyListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        companyLogo.image = UIImage(systemName: "person.crop.circle.badge.questionmark")
+    }
+    
+    // MARK: - Public Methods
+    
+    func setupWith(vacancyList: VacancyList?, at index: Int) {
+        let vacancy = vacancyList?.items[index]
+        
+        vacancyTitle.text = vacancy?.name
+        
+        if vacancy?.salary?.from != nil && vacancy?.salary?.to != nil {
+            salaryLabel.text = "от \(vacancy?.salary?.from ?? 0) до \(vacancy?.salary?.to ?? 0) \(vacancy?.salary?.currency ?? "")"
+        } else if vacancy?.salary?.from != nil && vacancy?.salary?.currency != nil {
+            salaryLabel.text = "\(vacancy?.salary?.from ?? 0) \(vacancy?.salary?.currency ?? "")"
+        } else {
+            salaryLabel.text = "Заработная плата не указана"
+        }
+        
+        companyName.text = vacancy?.employer?.name
+        
+        if vacancy?.snippet?.requirement != nil {
+            requirementsLabel.text = "Требования: " + (vacancy?.snippet?.requirement ?? "")
+        } else {
+            requirementsLabel.text = ""
+        }
+        
+        if vacancy?.snippet?.responsibility != nil {
+            responsibilitiesLabel.text = "Обязанности: " + (vacancy?.snippet?.responsibility ?? "")
+        } else {
+            responsibilitiesLabel.text = ""
+        }
+       
+        companyLogo.load(stringUrl: vacancy?.employer?.logoUrls?.original ?? "")
+    }
+    
     // MARK: - Private Methods
     
     private func addSubviews() {
@@ -40,14 +76,15 @@ class VacancyListCell: UITableViewCell {
         addSubview(companyName)
         addSubview(companyLogo)
         addSubview(requirementsLabel)
-        addSubview(responsibilities)
+        addSubview(responsibilitiesLabel)
     }
     
     private func applyConstraints() {
         NSLayoutConstraint.activate([
             vacancyTitle.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             vacancyTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            vacancyTitle.heightAnchor.constraint(equalToConstant: 25),
+            vacancyTitle.trailingAnchor.constraint(equalTo: companyLogo.leadingAnchor, constant: -10),
+            vacancyTitle.heightAnchor.constraint(equalToConstant: 40),
             
             salaryLabel.topAnchor.constraint(equalTo: vacancyTitle.bottomAnchor, constant: 5),
             salaryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -55,6 +92,7 @@ class VacancyListCell: UITableViewCell {
             
             companyName.topAnchor.constraint(equalTo: salaryLabel.bottomAnchor, constant: 5),
             companyName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            companyName.trailingAnchor.constraint(equalTo: companyLogo.leadingAnchor, constant: -10),
             companyName.heightAnchor.constraint(equalToConstant: 25),
             
             companyLogo.topAnchor.constraint(equalTo: topAnchor, constant: 20),
@@ -65,11 +103,11 @@ class VacancyListCell: UITableViewCell {
             requirementsLabel.topAnchor.constraint(equalTo: companyName.bottomAnchor, constant: 5),
             requirementsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             requirementsLabel.trailingAnchor.constraint(equalTo: companyLogo.leadingAnchor, constant: -10),
-            
-            responsibilities.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            responsibilities.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            responsibilities.topAnchor.constraint(equalTo: requirementsLabel.bottomAnchor, constant: 5),
-            responsibilities.trailingAnchor.constraint(equalTo: companyLogo.leadingAnchor, constant: -10),
+
+            responsibilitiesLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            responsibilitiesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            responsibilitiesLabel.topAnchor.constraint(equalTo: requirementsLabel.bottomAnchor, constant: 5),
+            responsibilitiesLabel.trailingAnchor.constraint(equalTo: companyLogo.leadingAnchor, constant: -10),
         ])
     }
 }
@@ -79,7 +117,8 @@ class VacancyListCell: UITableViewCell {
 private extension VacancyListCell {
     var _vacancyTitle: UILabel {
         let result = UILabel()
-        result.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        result.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        result.numberOfLines = 2
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }
@@ -93,6 +132,7 @@ private extension VacancyListCell {
     var _companyName: UILabel {
         let result = UILabel()
         result.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        result.numberOfLines = 2
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }
@@ -100,24 +140,43 @@ private extension VacancyListCell {
     var _companyLogo: UIImageView {
         let result = UIImageView()
         result.clipsToBounds = false
-        result.image = UIImage(systemName: "doc.fill")
+        result.image = UIImage(systemName: "person.crop.circle.badge.questionmark")
         result.layer.cornerRadius = 50
         result.clipsToBounds = true
+        result.contentMode = .scaleAspectFit
         result.translatesAutoresizingMaskIntoConstraints = false
+
         return result
     }
     
     var _requirementsLabel: UILabel {
         let result = UILabel()
         result.numberOfLines = 2
+        result.font = UIFont.systemFont(ofSize: 13, weight: .light)
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }
     
-    var _responsibilities: UILabel {
+    var _responsibilitiesLabel: UILabel {
         let result = UILabel()
         result.numberOfLines = 2
+        result.font = UIFont.systemFont(ofSize: 13, weight: .light)
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
+    }
+}
+//todo - вынести отдельно в расширение
+extension UIImageView {
+    func load(stringUrl: String) {
+        guard let url = URL(string: stringUrl) else { return }
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 }
