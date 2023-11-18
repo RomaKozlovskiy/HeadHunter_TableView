@@ -8,7 +8,7 @@
 import Foundation
 
 struct VacancyList: Decodable {
-    let items: [Item]
+    var items: [Item]
     let found: Int
     let pages: Int
     let perPage: Int
