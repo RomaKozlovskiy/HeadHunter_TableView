@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class VacancyListViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class VacancyListViewController: UIViewController {
     var presenter: VacancyListPresenterProtocol!
     private let searchController = UISearchController(searchResultsController: nil)
     private let tableView = UITableView()
+    private var cancellabels = Set<AnyCancellable>()
     
     // MARK: - View LifeCycle
     
@@ -21,7 +23,6 @@ class VacancyListViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemTeal
-        presenter.fetchVacancyList(path: "Программист", page: 0)
         setupSearchController()
         setupTableView()
     }
@@ -33,6 +34,14 @@ class VacancyListViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Введите в поиск название вакансии"
+        searchController.searchBar.searchTextField.textPublisher()
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .sink { (searchText) in
+                if searchText.count >= 3 {
+                    self.presenter.fetchVacancyList(path: searchText, page: 0)
+                }
+            }
+            .store(in: &cancellabels)
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
     }
