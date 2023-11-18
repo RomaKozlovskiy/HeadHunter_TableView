@@ -10,8 +10,9 @@ import UIKit
 class VacancyListViewController: UIViewController {
 
     // MARK: - Properties
-   
+
     var presenter: VacancyListPresenterProtocol!
+    private let searchController = UISearchController(searchResultsController: nil)
     private let tableView = UITableView()
     
     // MARK: - View LifeCycle
@@ -21,10 +22,20 @@ class VacancyListViewController: UIViewController {
 
         view.backgroundColor = .systemTeal
         presenter.fetchVacancyList(path: "Программист", page: 0)
+        setupSearchController()
         setupTableView()
     }
     
     // MARK: - Private Methods
+  
+    private func setupSearchController() {
+        navigationItem.searchController = searchController
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Введите в поиск название вакансии"
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
     
     private func setupTableView() {
         view.addSubview(tableView)
@@ -52,7 +63,6 @@ extension VacancyListViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: VacancyListCell.reuseID, for: indexPath) as! VacancyListCell
         let vacancyList = presenter.vacancyList
         cell.setupWith(vacancyList: vacancyList, at: indexPath.row)
-        
         return cell
     }
     
@@ -64,7 +74,6 @@ extension VacancyListViewController: UITableViewDelegate, UITableViewDataSource 
 // MARK: - VacancyListViewProtocol
 
 extension VacancyListViewController: VacancyListViewProtocol {
-
     func successVacancyLoading() {
         tableView.reloadData()
     }
