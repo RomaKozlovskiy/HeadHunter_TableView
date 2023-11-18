@@ -19,6 +19,10 @@
 		4E894BA72B07955B0002559F /* VacancyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA62B07955B0002559F /* VacancyList.swift */; };
 		4E894BA92B07A0020002559F /* DetailedVacancy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BA82B07A0020002559F /* DetailedVacancy.swift */; };
 		4E894BAB2B07B6F50002559F /* VacancyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BAA2B07B6F50002559F /* VacancyListCell.swift */; };
+		4E894BAD2B08D6530002559F /* VacancyListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BAC2B08D6530002559F /* VacancyListViewProtocol.swift */; };
+		4E894BAF2B08D6680002559F /* VacancyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BAE2B08D6680002559F /* VacancyListPresenter.swift */; };
+		4E894BB12B08D66E0002559F /* VacancyListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BB02B08D66E0002559F /* VacancyListPresenterProtocol.swift */; };
+		4E894BB32B08D78D0002559F /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BB22B08D78D0002559F /* ModuleBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		4E894BA62B07955B0002559F /* VacancyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyList.swift; sourceTree = "<group>"; };
 		4E894BA82B07A0020002559F /* DetailedVacancy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedVacancy.swift; sourceTree = "<group>"; };
 		4E894BAA2B07B6F50002559F /* VacancyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyListCell.swift; sourceTree = "<group>"; };
+		4E894BAC2B08D6530002559F /* VacancyListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyListViewProtocol.swift; sourceTree = "<group>"; };
+		4E894BAE2B08D6680002559F /* VacancyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyListPresenter.swift; sourceTree = "<group>"; };
+		4E894BB02B08D66E0002559F /* VacancyListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacancyListPresenterProtocol.swift; sourceTree = "<group>"; };
+		4E894BB22B08D78D0002559F /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 			children = (
 				4E894B7C2B04F0AF0002559F /* AppDelegate.swift */,
 				4E894B7E2B04F0AF0002559F /* SceneDelegate.swift */,
+				4E894BB22B08D78D0002559F /* ModuleBuilder.swift */,
 				4E894B8A2B04F0B00002559F /* Info.plist */,
 			);
 			path = ApplicationLayer;
@@ -152,6 +161,7 @@
 		4E894B982B04FA8D0002559F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E894BAC2B08D6530002559F /* VacancyListViewProtocol.swift */,
 				4E894B802B04F0AF0002559F /* VacancyListViewController.swift */,
 			);
 			path = View;
@@ -160,6 +170,8 @@
 		4E894B992B04FA960002559F /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				4E894BB02B08D66E0002559F /* VacancyListPresenterProtocol.swift */,
+				4E894BAE2B08D6680002559F /* VacancyListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -270,12 +282,16 @@
 				4E894B812B04F0AF0002559F /* VacancyListViewController.swift in Sources */,
 				4E894BA12B0637C70002559F /* NetworkClient.swift in Sources */,
 				4E894B9F2B06334B0002559F /* Config.swift in Sources */,
+				4E894BB12B08D66E0002559F /* VacancyListPresenterProtocol.swift in Sources */,
 				4E894BAB2B07B6F50002559F /* VacancyListCell.swift in Sources */,
 				4E894BA52B06449A0002559F /* JsonDecodeHelper.swift in Sources */,
+				4E894BAD2B08D6530002559F /* VacancyListViewProtocol.swift in Sources */,
 				4E894B7D2B04F0AF0002559F /* AppDelegate.swift in Sources */,
 				4E894BA72B07955B0002559F /* VacancyList.swift in Sources */,
 				4E894BA92B07A0020002559F /* DetailedVacancy.swift in Sources */,
 				4E894B7F2B04F0AF0002559F /* SceneDelegate.swift in Sources */,
+				4E894BB32B08D78D0002559F /* ModuleBuilder.swift in Sources */,
+				4E894BAF2B08D6680002559F /* VacancyListPresenter.swift in Sources */,
 				4E894BA32B063B890002559F /* CustomError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
