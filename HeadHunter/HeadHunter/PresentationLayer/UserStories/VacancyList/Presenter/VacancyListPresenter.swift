@@ -8,7 +8,7 @@
 import Foundation
 
 class VacancyListPresenter: VacancyListPresenterProtocol {
- 
+    
     // MARK: - Properties
     
     weak var view: VacancyListViewProtocol?
@@ -36,8 +36,16 @@ class VacancyListPresenter: VacancyListPresenterProtocol {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let vacancyList):
-                        self?.vacancyList = vacancyList
-                        strongSelf.view?.successVacancyLoading()
+                        if self?.vacancyList == nil {
+                            self?.vacancyList = vacancyList
+                            strongSelf.view?.successVacancyLoading()
+                        } else {
+                            if let vacancyList = vacancyList {
+                                self?.vacancyList?.items.append(contentsOf: vacancyList.items)
+                                self?.vacancyList?.page = vacancyList.page
+                                strongSelf.view?.successVacancyLoading()
+                            }
+                        }
                     case .failure(let error):
                         print(error.localizedDescription)
                     }

@@ -25,6 +25,7 @@ class VacancyListViewController: UIViewController {
         view.backgroundColor = .systemTeal
         setupSearchController()
         setupTableView()
+        listenForSearchTextChanges()
     }
     
     // MARK: - Private Methods
@@ -34,14 +35,7 @@ class VacancyListViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Введите в поиск название вакансии"
-        searchController.searchBar.searchTextField.textPublisher()
-            .debounce(for: 0.5, scheduler: DispatchQueue.main)
-            .sink { (searchText) in
-                if searchText.count >= 3 {
-                    self.presenter.fetchVacancyList(path: searchText, page: 0)
-                }
-            }
-            .store(in: &cancellabels)
+        
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -58,6 +52,20 @@ class VacancyListViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func listenForSearchTextChanges() {
+        searchController.searchBar.searchTextField.textPublisher()
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .sink { (searchText) in
+                if searchText.count >= 3 {
+                    if self.presenter.vacancyList != nil {
+                        self.presenter.vacancyList = nil
+                    }
+                    self.presenter.fetchVacancyList(path: searchText, page: 0)
+                }
+            }
+            .store(in: &cancellabels)
     }
 }
 
@@ -77,6 +85,15 @@ extension VacancyListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         200
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let vacancyList = presenter.vacancyList else { return }
+        if indexPath.row == vacancyList.items.count - 5 && vacancyList.items.count < vacancyList.pages {
+            let path = searchController.searchBar.searchTextField.text ?? ""
+            let page = (presenter.vacancyList?.page ?? 0 ) + 1
+            presenter.fetchVacancyList(path: path , page: page)
+        }
     }
 }
 

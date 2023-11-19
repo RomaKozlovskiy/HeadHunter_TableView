@@ -12,7 +12,7 @@ struct VacancyList: Decodable {
     let found: Int
     let pages: Int
     let perPage: Int
-    let page: Int
+    var page: Int
     let alternateUrl: String
     
    private enum CodingKeys: String, CodingKey {
