@@ -13,12 +13,12 @@ class VacancyListCell: UITableViewCell {
     
     static let reuseID = "VacancyListCell"
     
-    lazy var vacancyTitle: UILabel = _vacancyTitle
-    lazy var salaryLabel: UILabel = _salaryLabel
-    lazy var companyName: UILabel = _companyName
-    lazy var companyLogo: UIImageView = _companyLogo
-    lazy var requirementsLabel: UILabel = _requirementsLabel
-    lazy var responsibilitiesLabel: UILabel = _responsibilitiesLabel
+    private lazy var vacancyTitle: UILabel = _vacancyTitle
+    private lazy var salaryLabel: UILabel = _salaryLabel
+    private lazy var companyName: UILabel = _companyName
+    private lazy var companyLogo: UIImageView = _companyLogo
+    private lazy var requirementsLabel: UILabel = _requirementsLabel
+    private lazy var responsibilitiesLabel: UILabel = _responsibilitiesLabel
     
     // MARK: - init
     

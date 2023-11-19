@@ -95,6 +95,12 @@ extension VacancyListViewController: UITableViewDelegate, UITableViewDataSource 
             presenter.fetchVacancyList(path: path , page: page)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let  vacancyId = presenter.vacancyList?.items[indexPath.row].id {
+            presenter.didSelectVacancy(with: vacancyId)
+        }
+    }
 }
 
 // MARK: - VacancyListViewProtocol

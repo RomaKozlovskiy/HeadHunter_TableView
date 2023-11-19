@@ -52,4 +52,8 @@ class VacancyListPresenter: VacancyListPresenterProtocol {
                 }
             }
     }
+    
+    func didSelectVacancy(with vacancyId: String) {
+        router?.showDetailedVacancy(with: vacancyId)
+    }
 }

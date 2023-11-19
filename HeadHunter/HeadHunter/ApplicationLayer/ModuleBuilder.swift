@@ -25,6 +25,7 @@ class ModuleBuilder: ModuleBuilderProtocol {
         let networkClient = NetworkClient()
         let view = DetailedVacancyViewController()
         let presenter = DetailedVacancyPresenter(view: view, networkClient: networkClient, router: router, vacancyId: vacancyId)
+        presenter.vacancyId = vacancyId
         view.presenter = presenter
         return view
     }
