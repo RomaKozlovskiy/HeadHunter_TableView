@@ -35,7 +35,6 @@ class VacancyListViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Введите в поиск название вакансии"
-        
         definesPresentationContext = false
         navigationItem.hidesSearchBarWhenScrolling = false
     }

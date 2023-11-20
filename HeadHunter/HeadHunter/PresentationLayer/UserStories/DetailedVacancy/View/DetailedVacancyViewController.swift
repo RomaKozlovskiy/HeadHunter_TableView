@@ -6,65 +6,104 @@
 //
 
 import UIKit
- 
+
 class DetailedVacancyViewController: UIViewController {
     
+    // MARK: - Properties
+    
     var presenter: DetailedVacancyPresenterProtocol!
-    private let stackView = UIStackView()
     private lazy var vacancyTitle: UILabel = _vacancyTitle
     private lazy var salaryLabel: UILabel = _salaryLabel
     private lazy var vacancyDescription: UILabel = _vacancyDescription
     private lazy var vacancyAddress: UILabel = _vacancyAddress
     
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.frame = view.bounds
+        scrollView.contentSize = contentSize
+        return scrollView
+    }()
+    
+    private var contentSize: CGSize {
+        CGSize(width: view.frame.width, height: view.frame.height + 400)
+    }
+    
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.frame.size = contentSize
+        return contentView
+    }()
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    // MARK: - View LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.spacing = 5
-        view.backgroundColor = .lightGray
-        view.addSubview(stackView)
-        
-        setStackViewConstraints()
-        stackAddSubviews()
+        view.backgroundColor = .white
+        addSubviews()
+        applyConstraints()
+        presenter.fetchDetailedVacancy()
     }
     
-    func setStackViewConstraints() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .white
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.heightAnchor.constraint(equalToConstant: 250)
-        ])
-    }
     
-    func stackAddSubviews() {
-        if vacancyTitle.text != nil {
-            stackView.addArrangedSubview(vacancyTitle)
-        }
+    // MARK: - Private Methods
+    
+    private func addSubviews() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(stackView)
+        stackView.addArrangedSubview(vacancyTitle)
         stackView.addArrangedSubview(salaryLabel)
         stackView.addArrangedSubview(vacancyDescription)
         stackView.addArrangedSubview(vacancyAddress)
     }
     
+    private func applyConstraints() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+        ])
+        
+    }
 }
 
 // MARK: - DetailedVacancyViewProtocol
 
 extension DetailedVacancyViewController: DetailedVacancyViewProtocol {
-    
+    func showDetailedVacancy(_ detailedVacancy: DetailedVacancy?) {
+        vacancyTitle.text = detailedVacancy?.name
+        if detailedVacancy?.salary?.from != nil && detailedVacancy?.salary?.to != nil {
+            salaryLabel.text = "от \(detailedVacancy?.salary?.from ?? 0) до \(detailedVacancy?.salary?.to ?? 0) \(detailedVacancy?.salary?.currency ?? "")"
+        } else if detailedVacancy?.salary?.from != nil && detailedVacancy?.salary?.currency != nil {
+            salaryLabel.text = "\(detailedVacancy?.salary?.from ?? 0) \(detailedVacancy?.salary?.currency ?? "")"
+        } else {
+            salaryLabel.text = "Заработная плата не указана"
+        }
+        vacancyDescription.text = detailedVacancy?.description
+        vacancyDescription.attributedText = detailedVacancy?.description?.htmlToAttributedString
+        vacancyAddress.text = detailedVacancy?.area?.name
+    }
 }
 
 // MARK: - Private Extension
 
 private extension DetailedVacancyViewController {
+    
     var _vacancyTitle: UILabel {
         let result = UILabel()
         result.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-        result.backgroundColor = .green
-        result.text = "TEST"
+        result.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        result.textAlignment = .center
         result.numberOfLines = 0
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
@@ -73,8 +112,7 @@ private extension DetailedVacancyViewController {
     var _salaryLabel: UILabel {
         let result = UILabel()
         result.numberOfLines = 0
-        result.backgroundColor = .yellow
-        result.text = "TEST"
+        result.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }
@@ -82,8 +120,6 @@ private extension DetailedVacancyViewController {
     var _vacancyDescription: UILabel {
         let result = UILabel()
         result.numberOfLines = 0
-        result.backgroundColor = .cyan
-        result.text = "TEST"
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }
@@ -91,9 +127,14 @@ private extension DetailedVacancyViewController {
     var _vacancyAddress: UILabel {
         let result = UILabel()
         result.numberOfLines = 0
-        result.backgroundColor = .systemPink
-        result.text = "TEST"
+        result.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         result.translatesAutoresizingMaskIntoConstraints = false
         return result
     }
+    
 }
+
+
+
+
+

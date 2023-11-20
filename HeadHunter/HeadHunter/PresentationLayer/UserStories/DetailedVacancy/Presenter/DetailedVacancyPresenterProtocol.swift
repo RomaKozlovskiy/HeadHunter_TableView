@@ -15,4 +15,5 @@ protocol DetailedVacancyPresenterProtocol: AnyObject {
         router: RouterProtocol,
         vacancyId: String?
     )
+    func fetchDetailedVacancy()
 }

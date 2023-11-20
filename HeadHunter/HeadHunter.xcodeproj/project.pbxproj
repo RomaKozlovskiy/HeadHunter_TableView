@@ -30,6 +30,7 @@
 		4E894BBF2B08F6BC0002559F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BBE2B08F6BC0002559F /* Router.swift */; };
 		4E894BE22B095AF30002559F /* Extension  + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BE12B095AF30002559F /* Extension  + UIImageView.swift */; };
 		4E894BE42B095B230002559F /* Extension  + UISearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BE32B095B230002559F /* Extension  + UISearchTextField.swift */; };
+		4E894BE62B0BBD500002559F /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E894BE52B0BBD500002559F /* Extension + String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		4E894BBE2B08F6BC0002559F /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4E894BE12B095AF30002559F /* Extension  + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension  + UIImageView.swift"; sourceTree = "<group>"; };
 		4E894BE32B095B230002559F /* Extension  + UISearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension  + UISearchTextField.swift"; sourceTree = "<group>"; };
+		4E894BE52B0BBD500002559F /* Extension + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +107,6 @@
 			children = (
 				4E894B7C2B04F0AF0002559F /* AppDelegate.swift */,
 				4E894B7E2B04F0AF0002559F /* SceneDelegate.swift */,
-				4E894BB22B08D78D0002559F /* ModuleBuilder.swift */,
-				4E894BBE2B08F6BC0002559F /* Router.swift */,
 				4E894B8A2B04F0B00002559F /* Info.plist */,
 			);
 			path = ApplicationLayer;
@@ -142,6 +142,8 @@
 		4E894B942B04F8FE0002559F /* UserStories */ = {
 			isa = PBXGroup;
 			children = (
+				4E894BB22B08D78D0002559F /* ModuleBuilder.swift */,
+				4E894BBE2B08F6BC0002559F /* Router.swift */,
 				4E894B962B04F9C90002559F /* VacancyList */,
 				4E894B972B04FA0B0002559F /* DetailedVacancy */,
 			);
@@ -234,6 +236,7 @@
 			children = (
 				4E894BE12B095AF30002559F /* Extension  + UIImageView.swift */,
 				4E894BE32B095B230002559F /* Extension  + UISearchTextField.swift */,
+				4E894BE52B0BBD500002559F /* Extension + String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				4E894BA92B07A0020002559F /* DetailedVacancy.swift in Sources */,
 				4E894B7F2B04F0AF0002559F /* SceneDelegate.swift in Sources */,
 				4E894BB32B08D78D0002559F /* ModuleBuilder.swift in Sources */,
+				4E894BE62B0BBD500002559F /* Extension + String.swift in Sources */,
 				4E894BAF2B08D6680002559F /* VacancyListPresenter.swift in Sources */,
 				4E894BBB2B08EDDF0002559F /* DetailedVacancyPresenterProtocol.swift in Sources */,
 				4E894BB72B08EDBA0002559F /* DetailedVacancyViewProtocol.swift in Sources */,

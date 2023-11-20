@@ -8,13 +8,13 @@
 import Foundation
 
 struct DetailedVacancy: Decodable {
-    let id: String
-    let name: String
-    let salary: Salary
-    let description: String
-    let area: Area
+    let id: String?
+    let name: String?
+    let salary: Salary?
+    let description: String?
+    let area: Area?
 }
 
 struct Area: Decodable {
-    let name: String
+    let name: String?
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DetailedVacancyViewProtocol: AnyObject {
-    
+    func showDetailedVacancy(_ detailedVacancy: DetailedVacancy?)
 }

@@ -12,7 +12,7 @@ class VacancyListPresenter: VacancyListPresenterProtocol {
     // MARK: - Properties
     
     weak var view: VacancyListViewProtocol?
-    var router: RouterProtocol?
+    private var router: RouterProtocol?
     private let networkClient: NetworkClientProtocol!
     var vacancyList: VacancyList?
     
